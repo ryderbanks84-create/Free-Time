@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Time | Pearl Street Boutique</title>
-  <meta name="description" content="Free Time — an India-inspired boutique on Pearl Street. Handblock prints, silk, and boho jewelry.">
+  <title>Free Time | Boho &amp; Festival Boutique on Pearl Street, Boulder CO</title>
+  <meta name="description" content="Free Time is Boulder's go-to boho and festival boutique on Pearl Street. Shop tie-dye clothing, flowy dresses, felt hats, handmade jewelry, and spiritual home decor including Buddha statues, Ganesh, crystals, and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,134 +12,212 @@
 </head>
 <body>
 
-  <div class="announce-bar">Now Open on Pearl Street — Free Local Delivery Over $75</div>
+  <div class="announce-bar">Open Daily 11am–7pm — 1302 Pearl Street, Boulder CO</div>
 
   <header class="site-header">
     <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
     <a href="/" class="logo">Free Time</a>
     <nav class="main-nav">
       <a href="#new">New</a>
-      <a href="#clothing">Clothing</a>
-      <a href="#textiles">Textiles</a>
-      <a href="#jewelry">Jewelry</a>
-      <a href="#home">Home Goods</a>
-      <a href="#sale">Sale</a>
+      <a href="#category/clothing">Clothing</a>
+      <a href="#category/jewelry">Jewelry</a>
+      <a href="#category/hats">Hats</a>
+      <a href="#category/decor">Statues &amp; Decor</a>
+      <a href="#visit">Visit Us</a>
     </nav>
     <div class="header-icons">
       <a href="#search" aria-label="Search">&#128269;</a>
       <a href="#account" aria-label="Account">&#128100;</a>
-      <a href="#cart" aria-label="Cart">&#128722;</a>
+      <a href="#cart" aria-label="Cart" class="cart-link">
+        &#128722;<span class="cart-badge" id="cart-count" style="display:none"></span>
+      </a>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Color, Craft, and Pearl Street</h1>
-      <p>Handblock prints and heirloom textiles, made new.</p>
-      <a href="#new" class="btn">Shop New Arrivals</a>
-    </div>
-  </section>
+  <!-- ── Home view ─────────────────────────────────────────── -->
+  <div id="home-view">
 
-  <section class="category-grid">
-    <a href="#" class="category-card">
-      <div class="category-image" style="background-image:url('images/category-block-print.jpg')"></div>
-      <span>Block Print Shop</span>
-    </a>
-    <a href="#" class="category-card">
-      <div class="category-image" style="background-image:url('images/category-silk.jpg')"></div>
-      <span>Silk &amp; Zari</span>
-    </a>
-    <a href="#" class="category-card">
-      <div class="category-image" style="background-image:url('images/category-jewelry.jpg')"></div>
-      <span>Boho Jewelry</span>
-    </a>
-    <a href="#" class="category-card">
-      <div class="category-image" style="background-image:url('images/category-home.jpg')"></div>
-      <span>Home &amp; Decor</span>
-    </a>
-  </section>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Color, Spirit &amp; Pearl Street</h1>
+        <p>Tie-dye, festival wear, and global spiritual decor — all under one roof in Boulder.</p>
+        <a href="#new" class="btn">Shop New Arrivals</a>
+      </div>
+    </section>
 
-  <section class="collection">
-    <h2>Trending Now</h2>
-    <div class="product-row">
-      <div class="product-card">
-        <div class="product-image" style="background-image:url('images/product-1.jpg')"></div>
-        <p class="product-name">Marigold Wrap Dress</p>
-        <p class="product-price">$88</p>
-      </div>
-      <div class="product-card">
-        <div class="product-image" style="background-image:url('images/product-2.jpg')"></div>
-        <p class="product-name">Hand-Dyed Kantha Jacket</p>
-        <p class="product-price">$120</p>
-      </div>
-      <div class="product-card">
-        <div class="product-image" style="background-image:url('images/product-3.jpg')"></div>
-        <p class="product-name">Brass Jhumka Earrings</p>
-        <p class="product-price">$34</p>
-      </div>
-      <div class="product-card">
-        <div class="product-image" style="background-image:url('images/product-4.jpg')"></div>
-        <p class="product-name">Block-Print Table Runner</p>
-        <p class="product-price">$46</p>
-      </div>
-    </div>
-  </section>
+    <section class="category-grid" id="new">
+      <a href="#category/clothing" class="category-card">
+        <div class="category-image" style="background-image:url('images/store-dress-rack-1.jpg')"></div>
+        <span>Tie-Dye &amp; Festival Wear</span>
+      </a>
+      <a href="#category/clothing" class="category-card">
+        <div class="category-image" style="background-image:url('images/store-floral-dress-display.jpg')"></div>
+        <span>Dresses</span>
+      </a>
+      <a href="#category/jewelry" class="category-card">
+        <div class="category-image" style="background-image:url('images/product-starfish-necklace.jpg')"></div>
+        <span>Jewelry</span>
+      </a>
+      <a href="#category/hats" class="category-card">
+        <div class="category-image" style="background-image:url('images/store-hats-display.jpg')"></div>
+        <span>Hats</span>
+      </a>
+      <a href="#category/decor" class="category-card">
+        <div class="category-image" style="background-image:url('images/store-window-display.jpg')"></div>
+        <span>Statues &amp; Decor</span>
+      </a>
+    </section>
 
-  <section class="exclusive">
-    <h2>Only at Free Time</h2>
-    <div class="exclusive-grid">
-      <div class="exclusive-card">
-        <h3>Rajasthan Block Print</h3>
-        <p>Hand-stamped cotton, sourced direct from artisan cooperatives.</p>
+    <section class="collection">
+      <h2>Trending Now</h2>
+      <div class="product-row">
+        <a href="#product/1" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-mushroom-tee.jpg')"></div>
+          <p class="product-name">Mystic Mushroom Tee</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/2" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-harem-pants.jpg')"></div>
+          <p class="product-name">Festival Harem Pants</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/3" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-tiedye-set-sunset-1.jpg')"></div>
+          <p class="product-name">Sunset Tie-Dye Set</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/4" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-tiedye-set-sunset-2.jpg')"></div>
+          <p class="product-name">Faded Sunset Two-Piece</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/5" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-tiedye-set-jeweltone.jpg')"></div>
+          <p class="product-name">Jewel-Tone Tie-Dye Set</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/6" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-tiedye-set-black-cream.jpg')"></div>
+          <p class="product-name">Black &amp; Cream Tie-Dye Set</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/7" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-basic-set-green.jpg')"></div>
+          <p class="product-name">Sage Lounge Set</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/8" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-starfish-necklace.jpg')"></div>
+          <p class="product-name">Starfish Charm Necklace</p>
+          <p class="product-price">$XX</p>
+        </a>
+        <a href="#product/9" class="product-card">
+          <div class="product-image product-image--white" style="background-image:url('images/product-buddha-mask.jpg')"></div>
+          <p class="product-name">Hand-Carved Wooden Buddha Mask</p>
+          <p class="product-price">$XX</p>
+        </a>
       </div>
-      <div class="exclusive-card">
-        <h3>Zari &amp; Silk Edit</h3>
-        <p>Festival-ready pieces with real metallic thread work.</p>
-      </div>
-      <div class="exclusive-card">
-        <h3>Everyday Boho</h3>
-        <p>Easy layers built for Pearl Street afternoons.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="about">
-    <h2>Rooted in India, Styled for Pearl Street</h2>
-    <p>
-      Free Time brings hand-crafted textiles, jewelry, and home goods from artisans across India
-      to a corner of Pearl Street. Every piece is chosen for its story — block-printed by hand,
-      woven on a family loom, or finished with a technique passed down for generations.
-    </p>
-  </section>
+    <section class="exclusive">
+      <h2>Only at Free Time</h2>
+      <div class="exclusive-grid">
+        <div class="exclusive-card">
+          <h3>Tie-Dye Everything</h3>
+          <p>Hand-dyed in vivid sunset, jewel-tone, and earth palettes — no two pieces are ever exactly alike.</p>
+        </div>
+        <div class="exclusive-card" id="hats">
+          <h3>Festival Ready</h3>
+          <p>Harem pants, matching sets, flowy dresses, and felt bucket hats — built for Boulder summers and beyond.</p>
+        </div>
+        <div class="exclusive-card">
+          <h3>Global Spirit</h3>
+          <p>Buddha statues, Ganesh, Shiva Nataraja, crystals, and spiritual home decor curated from around the world.</p>
+        </div>
+      </div>
+    </section>
 
-  <footer class="site-footer">
-    <div class="footer-col">
-      <h4>Free Time</h4>
-      <p>[Street Address]<br>Pearl Street</p>
-      <p>[Store Hours]</p>
-    </div>
-    <div class="footer-col">
-      <h4>Shop</h4>
-      <a href="#new">New Arrivals</a>
-      <a href="#clothing">Clothing</a>
-      <a href="#jewelry">Jewelry</a>
-      <a href="#home">Home Goods</a>
-    </div>
-    <div class="footer-col">
-      <h4>About</h4>
-      <a href="#about">Our Story</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Instagram</a>
-    </div>
-    <div class="footer-col newsletter">
-      <h4>Stay in the Loop</h4>
-      <form>
-        <input type="email" placeholder="Email address" required>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  </footer>
+    <section class="about">
+      <h2>Free Time on Pearl Street</h2>
+      <p>
+        We're a boho and festival boutique tucked into the heart of Boulder's Pearl Street Mall.
+        You'll find hand-dyed tie-dye clothing, flowy dresses, felt hats, and handmade jewelry
+        alongside a carefully chosen collection of Buddhist and Hindu statuary, crystals, and
+        global spiritual decor. Come in, take your time, and find something that feels like you.
+      </p>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="visit-inner">
+        <div class="visit-info">
+          <h2>Come Find Us</h2>
+          <div class="visit-detail">
+            <strong>Address</strong>
+            <p>1302 Pearl Street<br>Boulder, CO 80302</p>
+          </div>
+          <div class="visit-detail">
+            <strong>Hours</strong>
+            <p>Open Daily<br>11am – 7pm</p>
+          </div>
+          <div class="visit-detail">
+            <strong>Phone</strong>
+            <p><a href="tel:7206671834">(720) 667-1834</a></p>
+          </div>
+          <div class="visit-detail">
+            <strong>Email</strong>
+            <p><a href="mailto:freetime3n3@gmail.com">freetime3n3@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="visit-photos">
+          <img src="images/store-window-display.jpg" alt="Buddha and Ganesh statues in Free Time's window display" class="visit-photo">
+          <img src="images/store-hats-display.jpg" alt="Felt bucket hats on display at Free Time" class="visit-photo">
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-col">
+        <h4>Free Time</h4>
+        <p>1302 Pearl Street<br>Boulder, CO 80302</p>
+        <p style="margin-top:8px">Open Daily: 11am – 7pm</p>
+        <p style="margin-top:4px"><a href="tel:7206671834">(720) 667-1834</a></p>
+        <p style="margin-top:4px"><a href="mailto:freetime3n3@gmail.com">freetime3n3@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#category/clothing">Tie-Dye &amp; Festival Wear</a>
+        <a href="#category/clothing">Dresses</a>
+        <a href="#category/jewelry">Jewelry</a>
+        <a href="#category/hats">Hats</a>
+        <a href="#category/decor">Statues &amp; Decor</a>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="#about">Our Story</a>
+        <a href="#visit">Visit Us</a>
+        <a href="mailto:freetime3n3@gmail.com">Contact</a>
+        <a href="#">Instagram</a>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>Stay in the Loop</h4>
+        <form>
+          <input type="email" placeholder="Email address" required>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </footer>
+
+  </div><!-- /#home-view -->
+
+  <!-- ── Dynamic view (category / product / cart / checkout / confirmation) -->
+  <div id="dynamic-view" hidden></div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast" hidden></div>
 
   <script src="js/script.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
