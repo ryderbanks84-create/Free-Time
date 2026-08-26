@@ -621,6 +621,222 @@ a.product-card:hover .product-image { opacity: 0.88; }
 }
 .dv-continue-btn:hover { background: #5a1620; }
 
+/* ── Search page ─────────────────────────────────────────── */
+.search-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid var(--ink);
+  padding: 28px 0 12px;
+  margin-bottom: 28px;
+}
+.search-icon { font-size: 1.3rem; flex-shrink: 0; }
+.search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  color: var(--ink);
+  outline: none;
+}
+.search-input::placeholder { color: rgba(0,0,0,0.3); }
+.search-result-count {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 20px;
+}
+.search-no-results {
+  color: #888;
+  padding: 40px 0;
+  font-size: 0.95rem;
+}
+
+/* ── Account page ────────────────────────────────────────── */
+.account-section { max-width: 680px; }
+.account-section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.account-order-box {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 2px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.account-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+.account-order-header h3 { font-size: 1rem; }
+.account-order-date { font-size: 0.82rem; color: #888; }
+
+.account-order-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.account-order-item:last-of-type { border-bottom: none; }
+.account-item-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: #f8f5f0;
+  flex-shrink: 0;
+}
+.account-item-info { flex: 1; }
+.account-item-name { font-size: 0.92rem; font-weight: 500; margin-bottom: 3px; }
+.account-item-meta { font-size: 0.8rem; color: #888; }
+.account-item-price { font-weight: 600; color: var(--maroon); font-size: 0.9rem; white-space: nowrap; }
+
+.account-ship-row {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  gap: 8px;
+}
+.account-note {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.6;
+}
+.account-note a { color: var(--maroon); text-decoration: underline; }
+
+.account-empty {
+  padding: 48px 0;
+  color: #888;
+}
+.account-empty p { margin-bottom: 20px; }
+.account-shop-btn { background: var(--maroon); color: white; }
+
+/* ── Our Story page ──────────────────────────────────────── */
+.story-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+.story-hero {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+.story-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.story-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 18, 12, 0.52);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--cream);
+}
+.story-hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.story-hero-overlay p {
+  font-size: 1.1rem;
+  opacity: 0.88;
+}
+
+.story-body {
+  padding: 0 24px;
+}
+
+.story-section {
+  padding: 48px 0 0;
+}
+.story-section h2 {
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+  color: var(--maroon);
+}
+.story-section p {
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 16px;
+  max-width: 720px;
+}
+.story-section--highlight {
+  background: white;
+  padding: 40px;
+  margin-top: 48px;
+  border-left: 4px solid var(--saffron);
+}
+.story-section--highlight h2 { margin-top: 0; }
+
+.story-sign {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  color: var(--ink) !important;
+  margin-top: 24px;
+}
+
+.story-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 40px;
+}
+.story-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+
+.story-visit-cta {
+  margin-top: 56px;
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--ink);
+  color: var(--cream);
+}
+.story-visit-cta h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.story-visit-cta p {
+  opacity: 0.82;
+  margin-bottom: 24px;
+}
+.story-btn {
+  background: var(--saffron);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .story-hero { height: 280px; }
+  .story-hero-overlay h1 { font-size: 2rem; }
+  .story-images { grid-template-columns: 1fr; }
+  .story-section--highlight { padding: 24px; }
+}
+
 /* ── Toast ───────────────────────────────────────────────── */
 .toast {
   position: fixed;

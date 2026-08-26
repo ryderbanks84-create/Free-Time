@@ -6,9 +6,10 @@
   // slug → display name mapping (kept in sync with nav hrefs)
   const categoryMap = {
     clothing: 'Clothing',
-    jewelry: 'Jewelry',
-    hats: 'Hats',
-    decor: 'Statues & Decor',
+    dresses:  'Dresses',
+    jewelry:  'Jewelry',
+    hats:     'Hats',
+    decor:    'Statues & Decor',
   };
 
   const MIN_GRID_CARDS = 6;
@@ -71,16 +72,26 @@
     if (hash === '#cart')         { renderCart();         return; }
     if (hash === '#checkout')     { renderCheckout();     return; }
     if (hash === '#confirmation') { renderConfirmation(); return; }
+    if (hash === '#story')        { renderStory();        return; }
+    if (hash === '#search')       { renderSearch();       return; }
+    if (hash === '#account')      { renderAccount();      return; }
 
-    // treat remaining hashes as page anchors — show home and let browser scroll
-    showHome();
+    // treat remaining hashes as page anchors — show home and scroll to element
+    showHome(hash);
   }
 
   // ── View helpers ──────────────────────────────────────────
-  function showHome() {
+  function showHome(anchorHash) {
     homeView.hidden = false;
     dynView.hidden  = true;
     dynView.innerHTML = '';
+    if (anchorHash) {
+      const el = document.querySelector(anchorHash);
+      if (el) {
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }));
+        return;
+      }
+    }
     window.scrollTo(0, 0);
   }
 
@@ -431,6 +442,182 @@
           </p>
         </div>
         <a href="#" class="dv-continue-btn">Continue Shopping →</a>
+      </div>
+    `);
+  }
+
+  // ── Search view ───────────────────────────────────────────
+  function renderSearch() {
+    mountView(`
+      ${backNav('← Home', '#')}
+      <div class="dv-page">
+        <div class="search-bar-wrap">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search products, categories…" autofocus>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    `);
+
+    const input = document.getElementById('search-input');
+    const resultsEl = document.getElementById('search-results');
+
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      if (!q) { resultsEl.innerHTML = ''; return; }
+
+      const results = products.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q)
+      );
+
+      if (results.length === 0) {
+        resultsEl.innerHTML = `<p class="search-no-results">No results for "<strong>${input.value}</strong>" — try a different word.</p>`;
+      } else {
+        resultsEl.innerHTML = `
+          <p class="search-result-count">${results.length} result${results.length !== 1 ? 's' : ''}</p>
+          <div class="dv-grid">${results.map(productCardHTML).join('')}</div>
+        `;
+      }
+    });
+
+    input.focus();
+  }
+
+  // ── Account view ──────────────────────────────────────────
+  function renderAccount() {
+    let order;
+    try { order = JSON.parse(localStorage.getItem('ft-last-order') || 'null'); }
+    catch { order = null; }
+
+    const orderHTML = order ? (() => {
+      const date = new Date(order.placedAt).toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
+      });
+      const itemsHTML = order.items.map(item => `
+        <div class="account-order-item">
+          <img src="${item.image}" alt="${item.name}" class="account-item-img">
+          <div class="account-item-info">
+            <p class="account-item-name">${item.name}</p>
+            ${item.size ? `<p class="account-item-meta">Size: ${item.size}</p>` : ''}
+            <p class="account-item-meta">Qty: ${item.quantity}</p>
+          </div>
+          <span class="account-item-price">$${item.price}</span>
+        </div>
+      `).join('');
+
+      return `
+        <div class="account-order-box">
+          <div class="account-order-header">
+            <h3>Most Recent Order</h3>
+            <span class="account-order-date">Placed ${date}</span>
+          </div>
+          ${itemsHTML}
+          <div class="account-ship-row">
+            <strong>Ships to:</strong>
+            <span>${order.shipping.street}, ${order.shipping.city}, ${order.shipping.state} ${order.shipping.zip}</span>
+          </div>
+        </div>
+        <p class="account-note">Have a question about your order? Email us at <a href="mailto:freetime3n3@gmail.com">freetime3n3@gmail.com</a> or call <a href="tel:7206671834">(720) 667-1834</a>.</p>
+      `;
+    })() : `
+      <div class="account-empty">
+        <p>You haven't placed any orders yet.</p>
+        <a href="#" class="btn account-shop-btn">Browse the Shop →</a>
+      </div>
+    `;
+
+    mountView(`
+      ${backNav('← Home', '#')}
+      <div class="dv-page">
+        <div class="dv-page-header">
+          <h2>Your Account</h2>
+        </div>
+        <section class="account-section">
+          <h3 class="account-section-title">Recent Purchase</h3>
+          ${orderHTML}
+        </section>
+      </div>
+    `);
+  }
+
+  // ── Our Story view ───────────────────────────────────────
+  function renderStory() {
+    mountView(`
+      ${backNav('← Home', '#')}
+      <div class="story-page">
+
+        <div class="story-hero">
+          <img src="images/store-exterior.jpg" alt="Free Time storefront on Pearl Street" class="story-hero-img">
+          <div class="story-hero-overlay">
+            <h1>Our Story</h1>
+            <p>Twenty years on Pearl Street — and counting.</p>
+          </div>
+        </div>
+
+        <div class="story-body">
+
+          <section class="story-section">
+            <h2>Where It All Began</h2>
+            <p>
+              Free Time opened its doors on Pearl Street Mall over twenty years ago with a simple
+              idea: Boulder deserved a shop that matched its spirit. A place where color wasn't
+              an afterthought, where the clothes felt as free as the people wearing them, and where
+              you could walk in looking for a dress and leave with a Buddha statue and a crystal
+              you didn't know you needed.
+            </p>
+            <p>
+              We planted ourselves at 1302 Pearl Street and never looked back. The mall has changed
+              around us — shops have come and gone — but Free Time has stayed exactly what it set
+              out to be: a little pocket of bohemian spirit in the heart of Boulder.
+            </p>
+          </section>
+
+          <div class="story-images">
+            <img src="images/store-window-display.jpg" alt="Spiritual statues in the Free Time window display" class="story-img">
+            <img src="images/store-hats-display.jpg" alt="Felt hats on display at Free Time" class="story-img">
+          </div>
+
+          <section class="story-section">
+            <h2>What We Carry — and Why</h2>
+            <p>
+              Every piece in the shop is here for a reason. Our hand-dyed tie-dye clothing is made
+              to be one of a kind — no two pieces come out exactly the same, because that's the
+              whole point. Our flowy dresses and festival wear are chosen for women who want to
+              move freely and look like themselves doing it.
+            </p>
+            <p>
+              The spiritual decor — our Buddha statues, Ganesh figures, Shiva Nataraja, crystals,
+              and global artifacts — comes from makers and sources we've built real relationships
+              with over two decades. These aren't mass-produced novelties. They're objects that
+              carry meaning, and we take that seriously.
+            </p>
+          </section>
+
+          <section class="story-section story-section--highlight">
+            <h2>A Place to Take Your Time</h2>
+            <p>
+              The name "Free Time" isn't accidental. We've always believed a good shop should slow
+              you down a little. Browse the hats. Pick up a crystal. Try on three dresses. Talk to
+              us — we've been here long enough to know our regulars by name, and we love meeting
+              new faces just as much.
+            </p>
+            <p>
+              Whether you've been coming in for years or you just wandered off Pearl Street and
+              through our door, welcome. There's no pressure here — just good things, honestly
+              priced, in a space that's been part of Boulder's fabric for twenty years.
+            </p>
+            <p class="story-sign">— The Free Time Family</p>
+          </section>
+
+          <div class="story-visit-cta">
+            <h3>Come See Us</h3>
+            <p>1302 Pearl Street, Boulder CO &nbsp;·&nbsp; Open Daily 11am – 7pm</p>
+            <a href="#visit" class="btn story-btn">Get Directions &amp; Hours</a>
+          </div>
+
+        </div>
       </div>
     `);
   }
